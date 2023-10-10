@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BusRent</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink = "search-buss">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="currentLoggedInUserName && !isAdmin" aria-current="page"><b>{{currentLoggedInUserName}}</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="isAdmin" aria-current="page"><b>ADMIN</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="!isAdmin && currentLoggedInUserName" aria-current="page" routerLink = "user-agreements">My Agreements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="isAdmin" aria-current="page" routerLink = "admin-page">All Agreements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="isAdmin" aria-current="page" routerLink = "add-bus">Add Bus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="!isAdmin && !currentLoggedInUserName" aria-current="page" routerLink = "">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" *ngIf="isAdmin" aria-current="page" routerLink = "admin-actions">Actions</a>
+          </li>
+          <li class="nav-item">
+            <a (click)="userLogOut()" class="nav-link active" *ngIf="currentLoggedInUserName"  aria-current="page" style="cursor:pointer; color:red" >Sign-Out</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>

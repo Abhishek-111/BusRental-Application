@@ -1,0 +1,5 @@
+label::before{
+    content:"*";
+    color: red;
+    margin-right:5px;
+}

@@ -1,0 +1,70 @@
+<div class="container">
+
+  <form #form="ngForm" (ngSubmit)="filterBuss()">
+    <div class="row mt-3">
+      <div class="col-sm-3">
+        <label for="maker" class="form-label">Bus Maker</label>
+        <select class="form-select" aria-label="Default select example" name="maker" [(ngModel)]="searchBuss.Maker" required>
+
+          <option value="0">TATA Motors</option>
+          <option value="1">Ashok Leyland</option>
+          <option value="2">Eicher Motors</option>
+          <option value="3">Force Motors</option>
+          <option value="4">Mahindra</option>
+          <option value="5">Bharat Benz</option>
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <label for="model" class="form-label">Bus Model</label>
+        <select class="form-select" aria-label="Default select example" name="maker" [(ngModel)]="searchBuss.Model" required>
+
+          <option value="0">Coach</option>
+          <option value="1">School Bus</option>
+          <option value="2">Mini Bus</option>
+          <option value="3">Minicoach</option>
+          <option value="4">Single Decker</option>
+          <option value="5">Double Decker</option>
+        </select>
+      </div>
+      <div class="col-sm-3">
+        <label for="price" class="form-label">Rental Price (Your Budget)</label>
+        <input type="number" class="form-control" id="price" name="price" [(ngModel)]="searchBuss.RentalPrice" required>
+      </div>
+      <div class="col-sm-3 mt-4 ">
+
+        <button type="submit" class="search-btn">Search</button>
+      </div>
+    </div>
+    <hr>
+  </form>
+
+  <div class="container my-2">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Maker</th>
+          <th>Model</th>
+          <th>Rental Price</th>
+          <th>Available</th>
+          <!-- <th></th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bus of filteredBuss">
+          <td><img [src]="bus.image" alt="product Image" width="90" height="70"> </td>
+          <td>{{bus.maker}}</td>
+          <td>{{bus.model}}</td>
+          <td><span>&#8377; </span>{{bus.rentalPrice}}</td>
+          <td *ngIf="bus.isAvailable" class="success">Yes</td>
+          <td *ngIf="!bus.isAvailable" class="danger">No</td>
+          <td *ngIf="bus.isAvailable"><a [routerLink]="['/book-bus',bus.id]" target="_blank"><button class="view-btn">View</button></a></td>
+          <td *ngIf="!bus.isAvailable"><a [routerLink]="['/book-bus',bus.id]"><button class="view-btn" disabled>View</button></a></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+
+</div>

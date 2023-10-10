@@ -1,0 +1,60 @@
+<div class="container">
+  <h3 class="mt-2"><u>Rental Agreement</u></h3>
+  <div class="row">
+    <div class="col-sm-4 mt-4">
+      <h5><i>Bus Maker:</i> {{bookingData.maker}}</h5>
+    </div>
+    <div class="col-sm-4 mt-4">
+      <h5><i>Bus Model:</i> {{bookingData.model}}</h5>
+    </div>
+    <div class="col-sm-4 mt-4">
+      <h5><i>Rental Price: </i> <span>&#8377;</span>{{bookingData.rentalPrice}}</h5>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-sm-4">
+      <h5><i>Your Name:</i> {{currUserName}}</h5>
+    </div>
+    <div class="col-sm-4">
+      <h5><i>Your Email:</i> {{currUserEmail}}</h5>
+    </div>
+    <div class="col-sm-4">
+      <h5><i>Your Phone:</i> {{currUserPhone}}</h5>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-sm-1">
+      <h5><i>Rental Duration:</i></h5>
+    </div>
+    <div class="col-sm-1">
+      <input type="text" id="text" class="form-control" [(ngModel)]="duration">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-4">
+      <button class="cost-btn mt-4" (click)="calculateCost()">Calculate Cost</button>
+    </div>
+    <div class="col-sm-4 mt-3">
+      <h5><i>Total Cost: </i> <b> <span>&#8377;</span>{{totalCost}}</b></h5>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <input type="text" id="sign" class="form-control" placeholder="Your Sign Here..." [(ngModel)] = "sign">
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-3">
+      <h5>Date: {{date | date: 'dd-MM-yyyy'}}</h5>
+    </div>
+  </div>
+
+  <button *ngIf="sign === currUserName" class="btn btn-warning --bs-dark-border-subtle mt-4" (click)="confirmBooking()">Confirm</button>
+
+</div>

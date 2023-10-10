@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row mt-4">
+
+
+    <!-- Image here -->
+    <div class="col-md-6">
+      <img [src]="busDetail.image" alt="product Image" width="350" height="300">
+    </div>
+    <div class="col-md-6 mt-2">
+
+      <h4 clas="text-center mb-5"><i>Maker:</i> <b> {{busDetail.maker}}</b></h4>
+
+      <div class="row">
+        <h4><i>Model: </i> {{busDetail.model}}</h4>
+        </div>
+        <div class="row">
+        <h4>
+          <p><i>Rental Price: </i> <span>&#8377;</span> <span>{{busDetail.rentalPrice}} / Day</span></p>
+        </h4>
+    </div>
+    <div class="row">
+        <h4>
+           <p><i>Number Plate:</i> {{busDetail.numberPlate}}</p>
+        </h4>
+      </div>
+
+
+      <div class="my-3" *ngIf="2">
+        <div class="row">
+          <div class="col-sm-6">
+            <h5><label for="duration" class="form-label"><i>Rental Duration (in Days)</i></label></h5>
+            <input type="number" class="form-control" id="duration" name="duration" [(ngModel)]="rentalDuration" required>
+          </div>
+          <div class="cols-sm-4 mt-2">
+            <h5>Estimated Total Cost = <span>&#8377; </span> {{rentalDuration*busDetail.rentalPrice}}</h5>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="">
+        <button *ngIf="busDetail.isAvailable" class="search-btn" (click)="continue()"> <span>Continue </span></button>
+        <!-- <button *ngIf="!productDetails.availableQuantity" class="btn btn-danger" disabled> <span>Out Of Stock <i class="fas fa-shopping-bust" ></i></span></button> -->
+      </div>
+      <hr>
+
+
+
+
+      
+    </div> <!-- Row 1 right part -->
+
+
+
+  </div>
+
+
+
+</div>

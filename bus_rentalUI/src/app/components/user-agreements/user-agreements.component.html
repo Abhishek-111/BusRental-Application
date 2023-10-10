@@ -1,0 +1,48 @@
+<div class="container">
+
+  <div *ngFor="let aggrement of userAgreements">
+    <div class="accordion mt-3" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Bus 1
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="row">
+              <div class="col-sm-4">
+                <span><b>Maker:</b> {{aggrement.maker}}</span>
+              </div>
+              <div class="col-sm-4">
+                <span><b>Model:</b> {{aggrement.model}}</span>
+              </div>
+              <div class="col-sm-4">
+                <span><b>Total Cost: </b> <span>&#8377;</span>{{aggrement.totalCost}}</span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-sm-8">
+                <!-- <span><b>Rental Duration:</b> {{aggrement.agreementDate}} days</span> -->
+                <span><b>Rent For:</b> {{aggrement.rentalDuration}} days <b>From</b> ({{aggrement.agreementDate | date: 'dd-MM-yyyy' }} <b>to</b> {{ addDaysToDate(aggrement.agreementDate,aggrement.rentalDuration ) | date:'dd-MM-yyyy'}})</span>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-sm-4">
+                <button class="btn btn-primary" (click)="returnBus(aggrement.busId)">Return</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+
+    </div>
+  </div>   <!-- For loop closes -->
+  <!-- If no content  -->
+  <div *ngIf = "userAgreements.length == 0" class="mt-3">
+    <h3 class="display-4">No Any bookings yet!!</h3>
+
+  </div>
+</div>

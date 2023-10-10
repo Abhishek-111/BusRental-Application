@@ -1,0 +1,67 @@
+<div class="container">
+
+    <div *ngFor="let aggrement of allAgreements; let i = index">
+      <div class="accordion mt-3" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Bus Agreement {{i+1}}
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="row">
+                <div class="col-sm-4">
+                  <span><b>User Name:</b> {{aggrement.userName}}</span>
+                </div>
+                <div class="col-sm-4">
+                  <span><b>User Contact:</b> {{aggrement.userPhone}}</span>
+                </div>
+                <div class="col-sm-4">
+                  <span><b>Bus Maker:</b> {{aggrement.busMaker}}</span>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-sm-4">
+                  <span><b>Bus Model:</b> {{aggrement.busModel}}</span>
+                </div>
+                <div class="col-sm-8">
+                    <span><b>Rent For:</b> {{aggrement.rentalDuration}} days <b>From</b> ({{aggrement.bookingDate | date: 'dd-MM-yyyy' }} <b>to</b> {{ addDaysToDate(aggrement.bookingDate,aggrement.rentalDuration ) | date:'dd-MM-yyyy'}})</span>
+                </div>
+               
+              </div>
+              <div class="row mt-2">
+                <div class="col-sm-4">
+                    <span><b>Total Cost:</b> {{aggrement.totalCost}}</span>
+                </div>
+                <div class="col-sm-8" *ngIf ="aggrement.validateReturnRequest">
+                    <p><b>Bus Returned By User:</b> <span class="success"> Yes</span> </p>
+                </div>
+                <div class="col-sm-8" *ngIf ="!aggrement.validateReturnRequest">
+                    <p><b>Bus Returned By User:</b><span class="danger"> No </span> </p>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-sm-4">
+                  <button *ngIf ="aggrement.requestForReturn && !aggrement.validateReturnRequest" class="btn btn-primary" (click)="validateReturnRequest(aggrement.agreementId)">Validate Return</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                    <button *ngIf ="aggrement.requestForReturn && aggrement.validateReturnRequest" class="btn btn-danger" (click)="deleteAgreement(aggrement.agreementId)">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      
+  
+      </div>
+    </div>   <!-- For loop closes -->
+    <!-- If no content  -->
+    <div *ngIf = "allAgreements.length == 0">
+      <p>No Any Agreements yet!!</p>
+  
+    </div>
+  </div>

@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="container my-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Maker</th>
+                    <th>Model</th>
+                    <th>Rental Price</th>
+                    <th>Available</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bus of allBuss">
+                  <td><img [src]="bus.image" alt="product Image" width="90" height="70"> </td>
+                    <td>{{bus.maker}}</td>
+                    <td>{{bus.model}}</td>
+                    <td><span>&#8377; </span>{{bus.rentalPrice}}</td>
+                    <td *ngIf="bus.isAvailable" class="success">Yes</td>
+                    <td *ngIf="!bus.isAvailable" class="danger">No</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <!-- <button>Update</button> -->
+                                <a [routerLink]="['/update-bus',bus.id]" target="_blank"><button class="view-btn update-btn">Update</button></a>
+                            </div>
+                            <div class="col-sm-3">
+                                <button (click) = "deleteBus(bus.id)" class="delete-btn">Delete</button>
+                            </div>
+                        </div>
+                    </td>
+                    <!-- <td *ngIf="bus.isAvailable"><a [routerLink]="['/book-bus',bus.id]" target="_blank"><button class="view-btn">View</button></a></td>
+                    <td *ngIf="!bus.isAvailable"><a [routerLink]="['/book-bus',bus.id]"><button class="view-btn" disabled>View</button></a></td> -->
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+</div>

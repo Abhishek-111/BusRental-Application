@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row my-3" *ngIf="isAdmin">
+        <div class="d-flex justify-content-between">
+        </div>
+
+        <div class="col-5 mx-4">
+
+            <form #form="ngForm" (ngSubmit)="addBus()">
+                <div class="mb-3">
+                    <label for="maker" class="form-label">Maker </label>
+                    <select class="form-select" aria-label="Default select example" name="maker"
+                        [(ngModel)]="addBusRequest.maker" required>
+
+                        <option value="0">TATA Motors</option>
+                        <option value="1">Ashok Leyland</option>
+                        <option value="2">Eicher Motors</option>
+                        <option value="3">Force Motors</option>
+                        <option value="4">Mahindra</option>
+                        <option value="5">Bharat Benz</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="model" class="form-label">Model</label>
+                    <select class="form-select" aria-label="Default select example" name="model"
+                        [(ngModel)]="addBusRequest.model" required>
+
+                        <option value="0">Coach</option>
+                        <option value="1">School Bus</option>
+                        <option value="2">Mini Bus</option>
+                        <option value="3">Minicoach</option>
+                        <option value="4">Single Decker</option>
+                        <option value="5">Double Decker</option>
+                    </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="numberPlate" class="form-label">Number Plate</label>
+                    <input type="text" class="form-control" id="availableQuantity" name="numberPlate"
+                        [(ngModel)]="addBusRequest.numberPlate" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="rentalPrice" class="form-label">Rental Price</label>
+                    <input type="number" class="form-control" id="price" name="rentalPrice"
+                        [(ngModel)]="addBusRequest.rentalPrice" required>
+                </div>
+
+                <!-- <div class="mb-3">
+                    <label for="discount" class="form-label">Discount</label>
+                    <input type="number" class="form-control" id="discount" name="discount"
+                        [(ngModel)]="addProductRequest.discount" required>
+                </div> -->
+
+                
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="text" class="form-control" id="image" name="image"
+                        [(ngModel)]="addBusRequest.image" required>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div> <!-- col ends-->
+        </div>
+
+</div>

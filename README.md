@@ -3,7 +3,10 @@ Bus Rental Application is a web application that allows both the regular users a
 Regular user can book a bus in online mode, the application allows the user to filter the bus based on the Maker, Model and 
 Rental Price (Budget). The admin user can add a new bus, edit and delete the bus data.
 
-TECHNOLOGIES USED :- C#, ASP.NET MVC, SQL SERVER, HTML, CSS, JavaScript, Bootstrap
+TECHNOLOGIES USED :-
+
+- C#, ASP.NET Web API, SQL SERVER, Entity Framework, Code First Approach
+- Angular, TypeScript, HTML, CSS, Bootstrap
 
 FUNCTIONAL REQUIREMENTS :-
 
